@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/github.png">
+    <title>GitHub user search app</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <nav>
+        <h1>devfinder</h1>
+        <div class="search-bar" >
+            <img src="img/lupa.png" alt="Lupa">
+            <input id="inputUser" type="text" value="Search GitHub username..." >
+            <button onclick="getUserInfo()" >Search</button>
+        </div>
+    </nav>
+    <main>
+        <section>
+           <img id="avatarImg" class="main__img" src="https://avatars.githubusercontent.com/u/101951211?v=4" alt="User icon">
+            <section class="user-info">
+                <h2 id="nameUser" >Nombre </h2>
+                <a id="username"> username</a>
+                <p id="registered" >Joined 21 asdf 2020</p>
+            </section>
+        </section>
+
+        <section>
+            <p id="description" >Descripción Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae quidem fugit, sequi alias.</p>
+            <div class="info-repos">
+                <div>
+                    <p>Repos</p>
+                    <p id="repos" >10</p>
+                </div>
+                <div>
+                    <p>Followers</p>
+                    <p id="followers" >32</p>
+                </div>
+                <div>
+                    <p>Following</p>
+                    <p id="following" >54</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div>
+                <img class="last-section-icon" src="img/mapa.png" alt="Map icon">
+                <p id="country" >Ecuador</p>
+            </div>
+            <div>
+                <img class="last-section-icon" src="img/link.png" alt="Link icon">
+                <p id="gitHubUrl" >googla.com.ca</p>
+            </div>
+            <div>
+                <img id="twitterImg" class="last-section-icon" src="img/twitterGrey.png" alt="Twitter icon">
+                <p id="twitterUsername">Not aviable</p>
+            </div>
+            <div>
+                <img class="last-section-icon" src="img/edificio.png" alt="City icon">
+                <p id="company" >Minechar</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="utils.js"></script>
+    <script src="main.js" ></script>
+</body>
+</html>
