@@ -1,8 +1,10 @@
 const API_URL = 'https://api.github.com'
-const months = ['Jan', 'Feb', 'Mar', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+const months = ['Jan', 'Feb', 'Mar', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+let logins = [];
+let inputText = null;
 
-async function getUserData() {
-    const res = await fetch(`${API_URL}/users/johnjairo594`);
+async function getUserData(userNameId) {
+    const res = await fetch(`${API_URL}/users/${userNameId}`);
     const data = await res.json();
 
     const [dateCreate, time] = data.created_at.split('T');
@@ -22,12 +24,20 @@ async function getUserData() {
         } else {
             description.innerText = data.bio;
         }
+
         repos.innerText = data.public_repos;
         followers.innerText = data.followers;
         following.innerText = data.following;
 
-        country.innerText = data.location;
+        if (data.location == null) {
+            country.innerText = 'Not aviable';
+
+        } else {
+            country.innerText = data.location;
+        }
+
         gitHubUrl.innerText = data.html_url;
+
         if (data.twitter_username == null) {
             twitterUsername.classList.add('twitterNotAviable-grey')
             imgTwitter.setAttribute('src', 'img/twitterGrey.png')
@@ -35,6 +45,7 @@ async function getUserData() {
             twitterUsername.classList.remove('twitterNotAviable-grey')
             imgTwitter.setAttribute('src', 'img/twitter.png')
         }
+
         if (data.company == null) {
             company.innerText = 'No company'            
         } else {
@@ -44,10 +55,30 @@ async function getUserData() {
 }
 
 async function searchUser() {
-    const res = await fetch(`${API_URL}/search/users?q=johnjairo`);
+    const res = await fetch(`${API_URL}/search/users?q=${inputUser.value}&per_page=6`);
     const data = await res.json();
-    console.log(data);
+    let logins = data.items
+    ulBox.innerHTML = ''
+    
+    for (i = 0; i < logins.length; i++) {
+        const itemResult = document.createElement('li')
+        const userNameId = document.createTextNode(`${logins[i].login}`)
+        itemResult.appendChild(userNameId);
+        ulBox.appendChild(itemResult);
+    }
+    
+    const liSelected = document.querySelector('ul');
+    liSelected.addEventListener('click', event => {
+        inputUser.value = (event.target.innerText)
+        ulBox.classList.add('hidden');
+        getUserData(event.target.innerText);
+    })
+    ulBox.classList.remove('hidden');
 }
 
-getUserData()
+buttonSearch.addEventListener('click', () => {
+    searchUser();
+})
+
+
 // searchUser()

@@ -1,3 +1,8 @@
+const inputUser = document.getElementById('inputUser')
+const buttonSearch = document.getElementById('buttonSearch')
+const ulBox = document.getElementById('autocomplete-results')
+
+
 const avatarImg = document.getElementById('avatarImg');
 const nameUser = document.getElementById('nameUser');
 const username = document.getElementById('username');

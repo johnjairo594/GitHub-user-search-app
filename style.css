@@ -23,6 +23,7 @@ body {
 
 nav {
     width: 90%;
+    position: relative;
 }
 
 .search-bar {
@@ -59,6 +60,36 @@ nav {
     letter-spacing: 0.01rem;
     font-weight: 700;
 }
+
+ul {
+    position: absolute;
+    top: 100%;
+    margin-top: -1px;
+    width: 100%;
+    z-index: 1;
+    background: var(--Dark-blue);
+    margin: 0;
+    list-style: none;
+    transition: none;
+    padding: 0;
+    border: .005rem solid #bfc8c9;
+    border-radius: .2rem;
+}
+  ul li {
+    padding: 6px 12px;
+    transition: 0.2s;
+    cursor: pointer;
+    color: var(--white);
+  }
+  ul li:hover {
+    background: var(--Blue);
+  }
+  ul li + li {
+    border-top: .005rem solid var(--white);
+  }
+  .hidden {
+    display: none;
+  }
 
 h1 {
     color: var(--white);

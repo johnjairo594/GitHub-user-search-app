@@ -17,8 +17,14 @@
         <h1>devfinder</h1>
         <div class="search-bar" >
             <img src="img/lupa.png" alt="Lupa">
-            <input id="inputUser" type="text" value="Search GitHub username..." >
-            <button onclick="getUserInfo()" >Search</button>
+            <input id="inputUser"  type="text" placeholder="Search GitHub username..." >
+            <button id="buttonSearch" type="button" >Search</button>
+            <ul
+                id='autocomplete-results'
+                role='listbox'
+                class="hidden"
+                >
+            </ul>
         </div>
     </nav>
     <main>
